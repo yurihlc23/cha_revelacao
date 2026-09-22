@@ -7,7 +7,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧸</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:wght@500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream: #f6efe2;
@@ -35,7 +35,7 @@
       radial-gradient(circle at 15% 8%, #fffaf1 0%, transparent 45%),
       radial-gradient(circle at 85% 95%, #fdf3e2 0%, transparent 40%),
       var(--cream);
-    font-family:"Cormorant Garamond", serif;
+    font-family:"Quicksand", sans-serif;
     color:var(--ink);
     display:flex;
     align-items:flex-start;
@@ -93,7 +93,7 @@
   .eyebrow-line{ width:52px; height:1px; background:var(--gold); margin:0 auto 10px; opacity:.8; }
 
   h1.title{
-    font-family:"Playfair Display", serif;
+    font-family:"Fredoka", sans-serif;
     font-weight:600;
     font-size:clamp(1.9rem, 7vw, 2.5rem);
     letter-spacing:.5px;
@@ -101,8 +101,9 @@
     margin:0 0 2px;
   }
   .names{
-    font-family:"Alex Brush", cursive;
-    font-size:clamp(2.4rem, 10vw, 3.1rem);
+    font-family:"Caveat", cursive;
+    font-weight:700;
+    font-size:clamp(2.6rem, 11vw, 3.4rem);
     line-height:1;
     color:var(--gold);
     margin:6px 0 18px;
@@ -110,7 +111,7 @@
   .names .name-boy{ color:#7fa8c9; }
   .names .name-girl{ color:#e08fa0; }
   .lede{
-    font-size:1.18rem;
+    font-size:1.12rem;
     line-height:1.55;
     max-width:34ch;
     margin:0 auto 22px;
@@ -120,9 +121,10 @@
   .verse{
     margin:0 auto 24px;
     max-width:32ch;
-    font-style:italic;
-    font-size:1.08rem;
-    line-height:1.6;
+    font-family:"Caveat", cursive;
+    font-weight:600;
+    font-size:1.5rem;
+    line-height:1.35;
     color:var(--ink);
     position:relative;
     padding:14px 6px;
@@ -136,17 +138,17 @@
   }
   .verse::after{ margin:10px auto 0; }
   .verse cite{
-    display:block; font-style:normal; font-family:"Playfair Display",serif;
-    font-size:.85rem; letter-spacing:.06em; color:var(--gold); margin-top:8px;
+    display:block; font-style:normal; font-family:"Fredoka",sans-serif; font-weight:500;
+    font-size:.82rem; letter-spacing:.06em; color:var(--gold); margin-top:8px;
   }
 
   .datebox{ margin-bottom:22px; }
   .datebox .date{
-    font-family:"Playfair Display", serif;
-    font-size:1.7rem; font-weight:600; color:var(--ink-deep);
+    font-family:"Fredoka", sans-serif;
+    font-size:1.6rem; font-weight:600; color:var(--ink-deep);
   }
-  .datebox .time{ font-size:1.15rem; color:var(--ink); }
-  .datebox .rsvp-note{ font-size:.98rem; color:var(--gold); margin-top:4px; }
+  .datebox .time{ font-size:1.1rem; color:var(--ink); }
+  .datebox .rsvp-note{ font-size:.95rem; color:var(--gold); margin-top:4px; }
 
   .divider{ width:70%; height:1px; background:var(--line); margin:22px auto; }
 
@@ -166,14 +168,6 @@
   .action:hover .icon, .action:focus-visible .icon{ transform:translateY(-4px) scale(1.05); box-shadow:0 12px 22px rgba(185,139,78,.45); }
   .action .icon svg{ width:24px; height:24px; }
   .action span{ max-width:76px; line-height:1.15; }
-
-  .gift-pop{
-    max-height:0; overflow:hidden; opacity:0;
-    transition: max-height .4s ease, opacity .35s ease, margin .35s ease;
-    font-size:.98rem; color:var(--ink); background:var(--cream-deep);
-    border-radius:14px; margin:0 auto;
-  }
-  .gift-pop.open{ max-height:120px; opacity:1; padding:14px 16px; margin:-4px auto 20px; }
 
   .dresscode{
     background:var(--cream-deep);
@@ -229,8 +223,70 @@
     .stage{ max-width:460px; }
   }
 
+  /* ---------- childish sparkle & floating details ---------- */
+  .stage{ isolation:isolate; }
+  .sparkle{
+    position:absolute; font-size:1rem; z-index:3; pointer-events:none;
+    animation: twinkle 2.6s ease-in-out infinite;
+    filter: drop-shadow(0 1px 1px rgba(74,46,26,0.15));
+  }
+  @keyframes twinkle{ 0%,100%{ opacity:.25; transform:scale(.7) rotate(0deg);} 50%{ opacity:1; transform:scale(1.15) rotate(12deg);} }
+
+  .floaty{
+    position:fixed; bottom:-8vh; font-size:1.15rem; z-index:5;
+    opacity:0; pointer-events:none;
+    animation-name: float-up; animation-timing-function: ease-in; animation-iteration-count: infinite;
+  }
+  @keyframes float-up{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); opacity:0; }
+    10%{ opacity:.8; }
+    50%{ transform:translateY(-55vh) translateX(10px) rotate(8deg); }
+    90%{ opacity:.6; }
+    100%{ transform:translateY(-108vh) translateX(-6px) rotate(-6deg); opacity:0; }
+  }
+
+  /* ---------- gift modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:20;
+    background: rgba(74,46,26,0.48);
+    backdrop-filter: blur(2px);
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+    opacity:0; pointer-events:none;
+    transition: opacity .28s ease;
+  }
+  .modal-overlay.open{ opacity:1; pointer-events:auto; }
+  .modal-card{
+    position:relative;
+    background:var(--card);
+    border:1.5px solid var(--gold-soft);
+    border-radius:28px;
+    max-width:300px;
+    width:100%;
+    padding:34px 26px 28px;
+    text-align:center;
+    box-shadow: var(--shadow);
+    transform:scale(.8) translateY(10px);
+    transition: transform .32s cubic-bezier(.2,.9,.3,1.3);
+  }
+  .modal-overlay.open .modal-card{ transform:scale(1) translateY(0); }
+  .modal-icon{ font-size:2.6rem; margin-bottom:6px; animation: giftbounce 1.8s ease-in-out infinite; }
+  @keyframes giftbounce{ 0%,100%{ transform:translateY(0) rotate(-4deg);} 50%{ transform:translateY(-6px) rotate(4deg);} }
+  .modal-card h2{
+    font-family:"Fredoka", sans-serif; font-weight:600; font-size:1.3rem;
+    color:var(--ink-deep); margin:6px 0 12px;
+  }
+  .modal-card p{ font-size:1.02rem; line-height:1.5; color:var(--ink); margin:0; }
+  .modal-close{
+    position:absolute; top:12px; right:14px;
+    width:30px; height:30px; border-radius:50%; border:none;
+    background:var(--cream-deep); color:var(--ink); font-size:1.1rem; line-height:1;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+
   @media (prefers-reduced-motion: reduce){
-    .cloud, .balloons, .arch-wrap, .plush{ animation:none !important; }
+    .cloud, .balloons, .arch-wrap, .plush, .sparkle, .floaty{ animation:none !important; }
+    .modal-card{ transition:none; }
   }
 </style>
 </head>
@@ -259,6 +315,17 @@
       </svg>
     </div>
   </div>
+
+  <div class="sparkle" style="left:18%; top:6%; animation-delay:.2s;">✨</div>
+  <div class="sparkle" style="right:14%; top:2%; animation-delay:1.1s; font-size:.8rem;">⭐</div>
+  <div class="sparkle" style="right:24%; top:20%; animation-delay:.7s; font-size:.85rem;">✨</div>
+  <div class="sparkle" style="left:8%; top:24%; animation-delay:1.6s; font-size:.75rem;">⭐</div>
+
+  <div class="floaty" style="left:4vw; animation-duration:9s; animation-delay:0s;">💛</div>
+  <div class="floaty" style="right:5vw; animation-duration:11s; animation-delay:2.5s;">⭐</div>
+  <div class="floaty" style="left:88vw; animation-duration:10s; animation-delay:5s;">🌙</div>
+  <div class="floaty" style="right:88vw; animation-duration:8.5s; animation-delay:1.2s; font-size:.9rem;">✨</div>
+  <div class="floaty" style="left:8vw; animation-duration:9.5s; animation-delay:3.6s; font-size:.9rem;">🎈</div>
 
   <svg class="plush boy" viewBox="0 0 120 130" aria-hidden="true">
     <ellipse cx="60" cy="120" rx="30" ry="8" fill="#4a2e1a" opacity="0.12"/>
@@ -337,15 +404,13 @@
         <span>Confirmar<br>Presença</span>
       </a>
 
-      <button class="action" type="button" onclick="document.getElementById('giftPop').classList.toggle('open')">
+      <button class="action" type="button" onclick="openGiftModal()">
         <span class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="18" height="12" rx="1.2"/><path d="M3 9h18M12 9v12M12 9C9 9 7.5 6.8 8.6 5.2 9.6 3.8 12 4.5 12 7c0-2.5 2.4-3.2 3.4-1.8C16.5 6.8 15 9 12 9Z"/></svg>
         </span>
         <span>Sugestão de<br>Presente</span>
       </button>
     </div>
-
-    <div class="gift-pop" id="giftPop">Fralda M/G ou mimos para o bebê são bem-vindos com carinho 💛</div>
 
     <div class="dresscode">
       <p>Para a festa ficar ainda mais linda,<br>venha com cores neutras:</p>
@@ -360,5 +425,30 @@
     <div class="footer-bear">🧸 🎈 🧸</div>
   </main>
 </div>
+
+<div class="modal-overlay" id="giftModal" onclick="if(event.target===this) closeGiftModal()">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="giftTitle">
+    <button class="modal-close" type="button" aria-label="Fechar" onclick="closeGiftModal()">✕</button>
+    <div class="modal-icon">🎁</div>
+    <h2 id="giftTitle">Sugestão de Presente</h2>
+    <p>Fralda M/G ou mimos para o bebê são bem-vindos com muito carinho 💛</p>
+  </div>
+</div>
+
+<script>
+  function openGiftModal(){
+    var m = document.getElementById('giftModal');
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeGiftModal(){
+    var m = document.getElementById('giftModal');
+    m.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeGiftModal();
+  });
+</script>
 </body>
 </html>
