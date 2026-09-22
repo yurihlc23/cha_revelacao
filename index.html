@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chá Revelação · Antônio ou Lara</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:wght@500;600;700&family=Alex+Brush&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #f6efe2;
+    --cream-deep: #efe4cf;
+    --card: #fbf7ee;
+    --ink: #5c3a21;
+    --ink-deep: #4a2e1a;
+    --gold: #b98b4e;
+    --gold-soft: #d9bd8c;
+    --line: rgba(92,58,33,0.28);
+    --blue: #c3d8e8;
+    --pink: #f0cfd0;
+    --shadow: 0 18px 45px rgba(74,46,26,0.18);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px);}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    min-height:100%;
+    background:
+      radial-gradient(circle at 15% 8%, #fffaf1 0%, transparent 45%),
+      radial-gradient(circle at 85% 95%, #fdf3e2 0%, transparent 40%),
+      var(--cream);
+    font-family:"Cormorant Garamond", serif;
+    color:var(--ink);
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:32px 16px 56px;
+    overflow-x:hidden;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --cream:#2a2019; --cream-deep:#241b15; --card:#332619; --ink:#f1e3cf; --ink-deep:#f8ecd9;
+      --line: rgba(241,227,207,0.25); --shadow: 0 18px 45px rgba(0,0,0,0.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#2a2019; --cream-deep:#241b15; --card:#332619; --ink:#f1e3cf; --ink-deep:#f8ecd9;
+    --line: rgba(241,227,207,0.25); --shadow: 0 18px 45px rgba(0,0,0,0.45);
+  }
+
+  .stage{ position:relative; width:100%; max-width:430px; }
+
+  /* ---------- floating sky decorations ---------- */
+  .sky{ position:relative; height:190px; margin-bottom:-58px; z-index:2; }
+  .cloud{
+    position:absolute; border-radius:50%;
+    background:#fff; opacity:.75; filter:blur(0.3px);
+    box-shadow: 0 0 0 14px #fff inset;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .cloud{ background:#4a3a28; box-shadow:0 0 0 14px #4a3a28 inset;} }
+  :root[data-theme="dark"] .cloud{ background:#4a3a28; box-shadow:0 0 0 14px #4a3a28 inset;}
+  .cloud.c1{ width:96px; height:44px; left:-10px; top:38px; animation: drift 9s ease-in-out infinite; }
+  .cloud.c2{ width:64px; height:30px; left:8px; top:14px; animation: drift 7s ease-in-out infinite .6s; }
+  .cloud.c3{ width:110px; height:46px; right:-16px; top:44px; animation: drift 10s ease-in-out infinite .3s; }
+  .cloud.c4{ width:60px; height:28px; right:14px; top:16px; animation: drift 8s ease-in-out infinite 1s; }
+  @keyframes drift{ 0%,100%{ transform:translateX(0);} 50%{ transform:translateX(8px);} }
+
+  .balloons{ position:absolute; left:50%; top:0; transform:translateX(-50%); width:170px; height:150px; animation: bob 4.2s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{ transform:translate(-50%,0);} 50%{ transform:translate(-50%,-10px);} }
+  .balloons svg{ width:100%; height:100%; display:block; }
+
+  .arch-wrap{
+    position:relative; z-index:1;
+    border:1.5px solid var(--gold-soft);
+    border-bottom:none;
+    border-top-left-radius:190px;
+    border-top-right-radius:190px;
+    border-radius:190px 190px 22px 22px;
+    background:var(--card);
+    box-shadow: var(--shadow);
+    padding:76px 30px 34px;
+    text-align:center;
+    animation: rise .9s cubic-bezier(.2,.8,.25,1) both;
+  }
+  @keyframes rise{ from{ opacity:0; transform:translateY(24px);} to{ opacity:1; transform:translateY(0);} }
+
+  .eyebrow-line{ width:52px; height:1px; background:var(--gold); margin:0 auto 10px; opacity:.8; }
+
+  h1.title{
+    font-family:"Playfair Display", serif;
+    font-weight:600;
+    font-size:clamp(1.9rem, 7vw, 2.5rem);
+    letter-spacing:.5px;
+    color:var(--ink-deep);
+    margin:0 0 2px;
+  }
+  .names{
+    font-family:"Alex Brush", cursive;
+    font-size:clamp(2.4rem, 10vw, 3.1rem);
+    line-height:1;
+    color:var(--gold);
+    margin:6px 0 18px;
+  }
+  .names .name-boy{ color:#7fa8c9; }
+  .names .name-girl{ color:#e08fa0; }
+  .lede{
+    font-size:1.18rem;
+    line-height:1.55;
+    max-width:34ch;
+    margin:0 auto 22px;
+    color:var(--ink);
+  }
+
+  .verse{
+    margin:0 auto 24px;
+    max-width:32ch;
+    font-style:italic;
+    font-size:1.08rem;
+    line-height:1.6;
+    color:var(--ink);
+    position:relative;
+    padding:14px 6px;
+  }
+  .verse::before,.verse::after{
+    content:"";
+    display:block;
+    width:26px; height:1px;
+    background:var(--gold-soft);
+    margin:0 auto 10px;
+  }
+  .verse::after{ margin:10px auto 0; }
+  .verse cite{
+    display:block; font-style:normal; font-family:"Playfair Display",serif;
+    font-size:.85rem; letter-spacing:.06em; color:var(--gold); margin-top:8px;
+  }
+
+  .datebox{ margin-bottom:22px; }
+  .datebox .date{
+    font-family:"Playfair Display", serif;
+    font-size:1.7rem; font-weight:600; color:var(--ink-deep);
+  }
+  .datebox .time{ font-size:1.15rem; color:var(--ink); }
+  .datebox .rsvp-note{ font-size:.98rem; color:var(--gold); margin-top:4px; }
+
+  .divider{ width:70%; height:1px; background:var(--line); margin:22px auto; }
+
+  .actions{ display:flex; justify-content:center; gap:22px; margin-bottom:20px; flex-wrap:wrap; }
+  .action{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    text-decoration:none; color:var(--ink); font-size:.92rem;
+    background:none; border:none; cursor:pointer; font-family:inherit;
+  }
+  .action .icon{
+    width:56px; height:56px; border-radius:50%;
+    background: linear-gradient(155deg, var(--gold-soft), var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; box-shadow:0 8px 18px rgba(185,139,78,.35);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .action:hover .icon, .action:focus-visible .icon{ transform:translateY(-4px) scale(1.05); box-shadow:0 12px 22px rgba(185,139,78,.45); }
+  .action .icon svg{ width:24px; height:24px; }
+  .action span{ max-width:76px; line-height:1.15; }
+
+  .gift-pop{
+    max-height:0; overflow:hidden; opacity:0;
+    transition: max-height .4s ease, opacity .35s ease, margin .35s ease;
+    font-size:.98rem; color:var(--ink); background:var(--cream-deep);
+    border-radius:14px; margin:0 auto;
+  }
+  .gift-pop.open{ max-height:120px; opacity:1; padding:14px 16px; margin:-4px auto 20px; }
+
+  .dresscode{
+    background:var(--cream-deep);
+    border-radius:18px;
+    padding:18px 18px 20px;
+    margin-top:4px;
+  }
+  .dresscode p{ margin:0 0 12px; font-size:1.02rem; line-height:1.5; }
+  .swatches{ display:flex; justify-content:center; gap:12px; }
+  .swatch{
+    width:34px; height:34px; border-radius:50%;
+    border:1px solid rgba(92,58,33,.25);
+    box-shadow: inset 0 0 0 3px var(--cream-deep);
+  }
+
+  .footer-bear{ margin-top:26px; font-size:1.6rem; letter-spacing:10px; opacity:.85; }
+
+  a, button{ -webkit-tap-highlight-color: transparent; }
+
+  /* ---------- plush toys ---------- */
+  .plush{
+    position:absolute;
+    width:118px;
+    z-index:0;
+    filter: drop-shadow(0 10px 16px rgba(74,46,26,0.18));
+  }
+  .plush.boy{ left:-30px; bottom:26px; animation: sway-left 5.4s ease-in-out infinite; transform-origin: 70% 100%; }
+  .plush.girl{ right:-28px; bottom:2px; width:126px; animation: sway-right 5.8s ease-in-out infinite .4s; transform-origin: 30% 100%; }
+  @keyframes sway-left{ 0%,100%{ transform:rotate(-3deg);} 50%{ transform:rotate(3deg);} }
+  @keyframes sway-right{ 0%,100%{ transform:rotate(3deg);} 50%{ transform:rotate(-3deg);} }
+
+  @media (max-width:380px){
+    .plush.boy{ width:92px; left:-22px; }
+    .plush.girl{ width:98px; right:-20px; }
+  }
+
+  @media (max-width:360px){
+    body{ padding:24px 10px 40px; }
+    .arch-wrap{ padding:70px 18px 28px; }
+    .actions{ gap:12px; }
+    .action .icon{ width:48px; height:48px; }
+    .action .icon svg{ width:20px; height:20px; }
+    .action span{ font-size:.82rem; max-width:64px; }
+    .lede{ font-size:1.05rem; }
+    .verse{ font-size:1rem; }
+    .datebox .date{ font-size:1.45rem; }
+    .footer-bear{ letter-spacing:6px; }
+    .plush.boy{ width:76px; left:-16px; }
+    .plush.girl{ width:82px; right:-14px; }
+  }
+
+  @media (min-width:600px){
+    .stage{ max-width:460px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cloud, .balloons, .arch-wrap, .plush{ animation:none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="sky">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+
+    <div class="balloons" aria-hidden="true">
+      <svg viewBox="0 0 170 150">
+        <line x1="85" y1="70" x2="70" y2="130" stroke="#b98b4e" stroke-width="1.2"/>
+        <line x1="85" y1="70" x2="85" y2="132" stroke="#b98b4e" stroke-width="1.2"/>
+        <line x1="85" y1="70" x2="100" y2="130" stroke="#b98b4e" stroke-width="1.2"/>
+        <ellipse cx="60" cy="45" rx="26" ry="30" fill="#f0cfd0"/>
+        <ellipse cx="95" cy="30" rx="30" ry="34" fill="#fbf7ee"/>
+        <ellipse cx="122" cy="52" rx="24" ry="28" fill="#c3d8e8"/>
+        <ellipse cx="80" cy="60" rx="20" ry="23" fill="#d9bd8c"/>
+        <circle cx="85" cy="132" r="9" fill="#a97c4f"/>
+        <circle cx="82" cy="130" r="1.6" fill="#5c3a21"/>
+        <circle cx="88" cy="130" r="1.6" fill="#5c3a21"/>
+        <ellipse cx="85" cy="135" rx="2.4" ry="1.6" fill="#5c3a21"/>
+      </svg>
+    </div>
+  </div>
+
+  <svg class="plush boy" viewBox="0 0 120 130" aria-hidden="true">
+    <ellipse cx="60" cy="120" rx="30" ry="8" fill="#4a2e1a" opacity="0.12"/>
+    <circle cx="30" cy="30" r="15" fill="#d9bd8c"/>
+    <circle cx="30" cy="30" r="7" fill="#f0e3c8"/>
+    <circle cx="90" cy="30" r="15" fill="#d9bd8c"/>
+    <circle cx="90" cy="30" r="7" fill="#f0e3c8"/>
+    <ellipse cx="60" cy="52" rx="34" ry="30" fill="#e6c99a"/>
+    <ellipse cx="60" cy="60" rx="18" ry="14" fill="#f5e9d1"/>
+    <circle cx="47" cy="46" r="3.2" fill="#5c3a21"/>
+    <circle cx="73" cy="46" r="3.2" fill="#5c3a21"/>
+    <ellipse cx="60" cy="58" rx="4" ry="3" fill="#5c3a21"/>
+    <path d="M52 66 Q60 72 68 66" stroke="#5c3a21" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <ellipse cx="60" cy="95" rx="30" ry="32" fill="#e6c99a"/>
+    <ellipse cx="60" cy="95" rx="15" ry="18" fill="#f5e9d1"/>
+    <ellipse cx="32" cy="88" rx="9" ry="14" fill="#e6c99a" transform="rotate(-18 32 88)"/>
+    <ellipse cx="88" cy="88" rx="9" ry="14" fill="#e6c99a" transform="rotate(18 88 88)"/>
+    <path d="M42 78 Q60 90 78 78 L74 88 Q60 96 46 88 Z" fill="#c3d8e8"/>
+    <circle cx="60" cy="80" r="4.5" fill="#a9c6dd"/>
+  </svg>
+
+  <svg class="plush girl" viewBox="0 0 128 138" aria-hidden="true">
+    <ellipse cx="64" cy="128" rx="32" ry="8" fill="#4a2e1a" opacity="0.12"/>
+    <ellipse cx="34" cy="26" rx="10" ry="22" fill="#e6c99a" transform="rotate(-12 34 26)"/>
+    <ellipse cx="34" cy="20" rx="6" ry="12" fill="#f5e9d1" transform="rotate(-12 34 20)"/>
+    <ellipse cx="94" cy="26" rx="10" ry="22" fill="#e6c99a" transform="rotate(12 94 26)"/>
+    <ellipse cx="94" cy="20" rx="6" ry="12" fill="#f5e9d1" transform="rotate(12 94 20)"/>
+    <ellipse cx="64" cy="55" rx="35" ry="31" fill="#efd8b0"/>
+    <ellipse cx="64" cy="62" rx="19" ry="15" fill="#f8ecd7"/>
+    <circle cx="51" cy="50" r="3.2" fill="#5c3a21"/>
+    <circle cx="77" cy="50" r="3.2" fill="#5c3a21"/>
+    <ellipse cx="64" cy="61" rx="4" ry="3" fill="#5c3a21"/>
+    <path d="M55 70 Q64 76 73 70" stroke="#5c3a21" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <circle cx="42" cy="58" r="4" fill="#f0cfd0" opacity=".8"/>
+    <circle cx="86" cy="58" r="4" fill="#f0cfd0" opacity=".8"/>
+    <ellipse cx="64" cy="102" rx="32" ry="34" fill="#efd8b0"/>
+    <ellipse cx="64" cy="102" rx="16" ry="19" fill="#f8ecd7"/>
+    <ellipse cx="34" cy="94" rx="9" ry="15" fill="#efd8b0" transform="rotate(-16 34 94)"/>
+    <ellipse cx="94" cy="94" rx="9" ry="15" fill="#efd8b0" transform="rotate(16 94 94)"/>
+    <path d="M46 24 q18 -14 36 0 q-4 10 -18 8 q-14 2 -18 -8Z" fill="#f0cfd0"/>
+    <circle cx="64" cy="24" r="4" fill="#e3a9ac"/>
+  </svg>
+
+  <main class="arch-wrap">
+    <div class="eyebrow-line"></div>
+    <h1 class="title">Chá Revelação</h1>
+    <div class="names"><span class="name-boy">Antônio</span> ou <span class="name-girl">Lara</span></div>
+
+    <p class="lede">Uma nova vida está para chegar e o nosso coração se enche de alegria. Junte‑se a nós para celebrar essa chegada!</p>
+
+    <div class="verse">
+      “Tudo tem o seu tempo determinado, e há tempo para todo propósito debaixo do céu.”
+      <cite>Eclesiastes 3:1</cite>
+    </div>
+
+    <div class="datebox">
+      <div class="date">17 de Outubro</div>
+      <div class="time">às 13h</div>
+      <div class="rsvp-note">Confirme sua presença até 03/10</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="actions">
+      <a class="action" href="https://maps.app.goo.gl/T3FcBFWrsSAHxwmM8" target="_blank" rel="noopener">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+        </span>
+        <span>Localização<br>Entrância Moria</span>
+      </a>
+
+      <a class="action" href="https://wa.me/5519987708189?text=Ol%C3%A1!%20Quero%20confirmar%20presen%C3%A7a%20no%20Ch%C3%A1%20Revela%C3%A7%C3%A3o%20do%20Ant%C3%B4nio%20ou%20Lara%20%F0%9F%A4%8E" target="_blank" rel="noopener">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3.2-.4.1-.2 0-.4 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+        </span>
+        <span>Confirmar<br>Presença</span>
+      </a>
+
+      <button class="action" type="button" onclick="document.getElementById('giftPop').classList.toggle('open')">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="18" height="12" rx="1.2"/><path d="M3 9h18M12 9v12M12 9C9 9 7.5 6.8 8.6 5.2 9.6 3.8 12 4.5 12 7c0-2.5 2.4-3.2 3.4-1.8C16.5 6.8 15 9 12 9Z"/></svg>
+        </span>
+        <span>Sugestão de<br>Presente</span>
+      </button>
+    </div>
+
+    <div class="gift-pop" id="giftPop">Fralda M/G ou mimos para o bebê são bem-vindos com carinho 💛</div>
+
+    <div class="dresscode">
+      <p>Para a festa ficar ainda mais linda,<br>venha com cores neutras:</p>
+      <div class="swatches" aria-label="Paleta de cores sugerida: branco, bege, caramelo e marrom">
+        <span class="swatch" style="background:#ffffff"></span>
+        <span class="swatch" style="background:#ede0c8"></span>
+        <span class="swatch" style="background:#c7a17a"></span>
+        <span class="swatch" style="background:#6b4226"></span>
+      </div>
+    </div>
+
+    <div class="footer-bear">🧸 🎈 🧸</div>
+  </main>
+</div>
+</body>
+</html>
