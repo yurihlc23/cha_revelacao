@@ -4,23 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Chá Revelação · Antônio ou Lara</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧸</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧸</text>??</svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #f6efe2;
-    --cream-deep: #efe4cf;
-    --card: #fbf7ee;
-    --ink: #5c3a21;
-    --ink-deep: #4a2e1a;
-    --gold: #b98b4e;
-    --gold-soft: #d9bd8c;
-    --line: rgba(92,58,33,0.28);
-    --blue: #c3d8e8;
-    --pink: #f0cfd0;
-    --shadow: 0 18px 45px rgba(74,46,26,0.18);
+    --cream: #F1E8D6;
+    --cream-deep: #D9C5A2;
+    --card: #FFFDF7;
+    --ink: #825E49;
+    --ink-deep: #6B4A36;
+    --gold: #A88764;
+    --gold-soft: #C7A17A;
+    --line: rgba(130,94,73,0.28);
+    --blue: #A88764;
+    --pink: #D9C5A2;
+    --shadow: 0 18px 45px rgba(107,66,38,0.18);
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -32,8 +32,8 @@
     margin:0;
     min-height:100%;
     background:
-      radial-gradient(circle at 15% 8%, #fffaf1 0%, transparent 45%),
-      radial-gradient(circle at 85% 95%, #fdf3e2 0%, transparent 40%),
+      radial-gradient(circle at 15% 8%, #FFFDF7 0%, transparent 45%),
+      radial-gradient(circle at 85% 95%, #E9D8BC 0%, transparent 40%),
       var(--cream);
     font-family:"Quicksand", sans-serif;
     color:var(--ink);
@@ -43,15 +43,9 @@
     padding:32px 16px 56px;
     overflow-x:hidden;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --cream:#2a2019; --cream-deep:#241b15; --card:#332619; --ink:#f1e3cf; --ink-deep:#f8ecd9;
-      --line: rgba(241,227,207,0.25); --shadow: 0 18px 45px rgba(0,0,0,0.45);
-    }
-  }
-  :root[data-theme="dark"]{
-    --cream:#2a2019; --cream-deep:#241b15; --card:#332619; --ink:#f1e3cf; --ink-deep:#f8ecd9;
-    --line: rgba(241,227,207,0.25); --shadow: 0 18px 45px rgba(0,0,0,0.45);
+:root[data-theme="dark-disabled"]{
+    --cream:#3A2D24; --cream-deep:#4A382B; --card:#4A382B; --ink:#F1E8D6; --ink-deep:#FFFDF7;
+    --line: rgba(241,232,214,0.25); --shadow: 0 18px 45px rgba(0,0,0,0.45);
   }
 
   .stage{ position:relative; width:100%; max-width:430px; }
@@ -65,10 +59,9 @@
     height:auto;
     display:block;
     opacity:.9;
-    filter: drop-shadow(0 4px 6px rgba(74,46,26,0.08));
+    filter: drop-shadow(0 4px 6px rgba(107,66,38,0.08));
   }
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .cloud{ opacity:.75; filter:brightness(.75) drop-shadow(0 4px 6px rgba(0,0,0,0.3));} }
-  :root[data-theme="dark"] .cloud{ opacity:.75; filter:brightness(.75) drop-shadow(0 4px 6px rgba(0,0,0,0.3));}
+:root[data-theme="dark"] .cloud{ opacity:.75; filter:brightness(.75) drop-shadow(0 4px 6px rgba(0,0,0,0.3));}
   .cloud.c1{ max-width:118px; width:27vw; left:-26px; top:52px; animation: drift 9s ease-in-out infinite; }
   .cloud.c2{ max-width:80px; width:19vw; left:-2px; top:16px; animation: drift 7s ease-in-out infinite .6s; }
   .cloud.c3{ max-width:132px; width:30vw; right:-30px; top:58px; transform:scaleX(-1); animation: drift-r 10s ease-in-out infinite .3s; }
@@ -76,7 +69,7 @@
   @keyframes drift-r{ 0%,100%{ transform:scaleX(-1) translateX(0);} 50%{ transform:scaleX(-1) translateX(8px);} }
   @keyframes drift{ 0%,100%{ transform:translateX(0);} 50%{ transform:translateX(8px);} }
 
-  .balloons{ position:absolute; left:50%; top:0; transform:translateX(-50%); max-width:200px; width:46vw; animation: bob 4.2s ease-in-out infinite; }
+  .balloons{ position:absolute; left:50%; top:0; transform:translateX(-50%); max-width:150px; width:46vw; animation: bob 4.2s ease-in-out infinite; }
   @keyframes bob{ 0%,100%{ transform:translate(-50%,0);} 50%{ transform:translate(-50%,-10px);} }
   .balloons img{ width:100%; height:auto; display:block; }
 
@@ -113,8 +106,8 @@
     color:var(--gold);
     margin:6px 0 18px;
   }
-  .names .name-boy{ color:#7fa8c9; }
-  .names .name-girl{ color:#e08fa0; }
+  .names .name-boy{ color:#A88764; }
+  .names .name-girl{ color:#C7A17A; }
   .lede{
     font-size:1.12rem;
     line-height:1.55;
@@ -167,10 +160,10 @@
     width:56px; height:56px; border-radius:50%;
     background: linear-gradient(155deg, var(--gold-soft), var(--gold));
     display:flex; align-items:center; justify-content:center;
-    color:#fff; box-shadow:0 8px 18px rgba(185,139,78,.35);
+    color:#fff; box-shadow:0 8px 18px rgba(168,135,100,.35);
     transition: transform .25s ease, box-shadow .25s ease;
   }
-  .action:hover .icon, .action:focus-visible .icon{ transform:translateY(-4px) scale(1.05); box-shadow:0 12px 22px rgba(185,139,78,.45); }
+  .action:hover .icon, .action:focus-visible .icon{ transform:translateY(-4px) scale(1.05); box-shadow:0 12px 22px rgba(168,135,100,.45); }
   .action .icon svg{ width:24px; height:24px; }
   .action span{ max-width:76px; line-height:1.15; }
 
@@ -184,7 +177,7 @@
   .swatches{ display:flex; justify-content:center; gap:12px; }
   .swatch{
     width:34px; height:34px; border-radius:50%;
-    border:1px solid rgba(92,58,33,.25);
+    border:1px solid rgba(130,94,73,.25);
     box-shadow: inset 0 0 0 3px var(--cream-deep);
   }
 
@@ -199,8 +192,8 @@
     z-index:2;
     filter: drop-shadow(0 10px 16px rgba(74,46,26,0.18));
   }
-  .plush.boy{ left:-5vw; bottom:0px; width:clamp(70px, 32vw, 135px); animation: sway-left 5.4s ease-in-out infinite; transform-origin: 65% 100%; }
-  .plush.girl{ right:-6vw; bottom:2px; width:clamp(64px, 30vw, 126px); animation: sway-right 5.8s ease-in-out infinite .4s; transform-origin: 30% 100%; }
+  .plush.boy{ left:-5vw; bottom:0px; width:clamp(70px, 32vw, 120px); animation: sway-left 5.4s ease-in-out infinite; transform-origin: 65% 100%; }
+  .plush.girl{ right:-6vw; bottom:2px; width:clamp(64px, 30vw, 120px); animation: sway-right 5.8s ease-in-out infinite .4s; transform-origin: 30% 100%; }
   @keyframes sway-left{ 0%,100%{ transform:rotate(-3deg);} 50%{ transform:rotate(3deg);} }
   @keyframes sway-right{ 0%,100%{ transform:rotate(3deg);} 50%{ transform:rotate(-3deg);} }
 
@@ -239,7 +232,7 @@
   /* ---------- gift modal ---------- */
   .modal-overlay{
     position:fixed; inset:0; z-index:20;
-    background: rgba(74,46,26,0.48);
+    background: rgba(107,66,38,0.48);
     backdrop-filter: blur(2px);
     display:flex; align-items:center; justify-content:center;
     padding:24px;
@@ -295,9 +288,10 @@
     </div>
   </div>
 
-  <div class="floaty" style="left:4vw; animation-duration:9s; animation-delay:0s;">??</div>
-  <div class="floaty" style="left:88vw; animation-duration:10s; animation-delay:5s;">??</div>
-  <div class="floaty" style="left:8vw; animation-duration:9.5s; animation-delay:3.6s; font-size:.9rem;">??</div>
+  <div class="floaty" style="left:4vw; animation-duration:9s; animation-delay:0s;">✨</div>
+  <div class="floaty" style="left:88vw; animation-duration:10s; animation-delay:5s;">⭐</div>
+  <div class="floaty" style="left:8vw; animation-duration:9.5s; animation-delay:3.6s; font-size:.9rem;">✨</div>
+  
 
   <img class="plush boy" src="img/ursinho-no-balao.png" alt="Ursinho de pelúcia em um balão de ar quente" loading="lazy">
 
@@ -350,10 +344,10 @@
     <div class="dresscode">
       <p>Para a festa ficar ainda mais linda,<br>venha com cores neutras:</p>
       <div class="swatches" aria-label="Paleta de cores sugerida: branco, bege, caramelo e marrom">
-        <span class="swatch" style="background:#ffffff"></span>
-        <span class="swatch" style="background:#ede0c8"></span>
-        <span class="swatch" style="background:#c7a17a"></span>
-        <span class="swatch" style="background:#6b4226"></span>
+        <span class="swatch" style="background:#FFFDF7"></span>
+        <span class="swatch" style="background:#D9C5A2"></span>
+        <span class="swatch" style="background:#A88764"></span>
+        <span class="swatch" style="background:#825E49"></span>
       </div>
     </div>
 
@@ -365,8 +359,8 @@
     <button class="modal-close" type="button" aria-label="Fechar" onclick="closeGiftModal()">?</button>
     <div class="modal-icon">??</div>
     <h2 id="giftTitle">Sugestão de Presente</h2>
-    <p>-Fralda M/G 🩷</p>
-    <p>-Mimos para o bebê são bem-vindos com muito carinho 💙</p>
+    <p>-Fralda M/G ??</p>
+    <p>-Mimos para o bebê são bem-vindos com muito carinho ??</p>
   </div>
 </div>
 
