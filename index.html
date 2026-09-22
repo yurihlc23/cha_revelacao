@@ -284,8 +284,31 @@
     cursor:pointer; display:flex; align-items:center; justify-content:center;
   }
 
+  /* ---------- rockets & butterflies flying by ---------- */
+  .flyby{
+    position:fixed; left:0; top:0; z-index:6;
+    font-size:1.5rem; pointer-events:none;
+    animation-name: fly-across; animation-timing-function: ease-in-out; animation-iteration-count: infinite;
+    filter: drop-shadow(0 2px 4px rgba(74,46,26,.2));
+  }
+  @keyframes fly-across{
+    0%{ transform:translate(-15vw, 0); opacity:0; }
+    8%{ opacity:.95; }
+    50%{ transform:translate(65vw, -46px); }
+    92%{ opacity:.9; }
+    100%{ transform:translate(130vw, 14px); opacity:0; }
+  }
+  .flyby .rocket-icon{ display:inline-block; transform:rotate(35deg); }
+  .flyby .flutter{
+    display:inline-block;
+    animation: flutter-wing .55s ease-in-out infinite alternate;
+    transform-origin:50% 50%;
+  }
+  @keyframes flutter-wing{ from{ transform:scaleX(1) rotate(-8deg);} to{ transform:scaleX(.72) rotate(8deg);} }
+
   @media (prefers-reduced-motion: reduce){
     .cloud, .balloons, .arch-wrap, .plush, .sparkle, .floaty{ animation:none !important; }
+    .flyby, .flutter{ animation:none !important; display:none; }
     .modal-card{ transition:none; }
   }
 </style>
@@ -326,6 +349,12 @@
   <div class="floaty" style="left:88vw; animation-duration:10s; animation-delay:5s;">🌙</div>
   <div class="floaty" style="right:88vw; animation-duration:8.5s; animation-delay:1.2s; font-size:.9rem;">✨</div>
   <div class="floaty" style="left:8vw; animation-duration:9.5s; animation-delay:3.6s; font-size:.9rem;">🎈</div>
+
+  <div class="flyby" style="top:10%; animation-duration:13s; animation-delay:.5s;"><span class="rocket-icon">🚀</span></div>
+  <div class="flyby" style="top:62%; animation-duration:16s; animation-delay:6s; font-size:1.3rem;"><span class="rocket-icon">🚀</span></div>
+  <div class="flyby" style="top:22%; animation-duration:15s; animation-delay:2.4s;"><span class="flutter">🦋</span></div>
+  <div class="flyby" style="top:48%; animation-duration:17s; animation-delay:8s; font-size:1.3rem;"><span class="flutter">🦋</span></div>
+  <div class="flyby" style="top:75%; animation-duration:14s; animation-delay:11s; font-size:1.2rem;"><span class="flutter">🦋</span></div>
 
   <svg class="plush boy" viewBox="0 0 120 130" aria-hidden="true">
     <ellipse cx="60" cy="120" rx="30" ry="8" fill="#4a2e1a" opacity="0.12"/>
@@ -431,7 +460,8 @@
     <button class="modal-close" type="button" aria-label="Fechar" onclick="closeGiftModal()">✕</button>
     <div class="modal-icon">🎁</div>
     <h2 id="giftTitle">Sugestão de Presente</h2>
-    <p>Fralda M/G ou mimos para o bebê são bem-vindos com muito carinho 💛</p>
+    <p>-Fraldas M/G 🩷</p>
+    <p>-Mimos para o bebê são bem-vindos com muito carinho 💛</p>
   </div>
 </div>
 
